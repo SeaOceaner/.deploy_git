@@ -1,0 +1,566 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1 三层架构 界面层 业务逻辑层 数据访问层   常用的框架SSM spring：核心是IOC和AOP 跨领域提供了好的解决方案 springMVBC：专门用来优化控制器的，提供了既简单的数据提交，数据携带，页面跳转的功能 Mybatis：是一个持久层的框架，用来进行数据库访问的优化，专注于sql语句，极大的优化了JDBC的访问。    2 框架 JDBC优化的框架， 什么是框架(MyBatis)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/05/21/Mybatis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 三层架构 界面层 业务逻辑层 数据访问层   常用的框架SSM spring：核心是IOC和AOP 跨领域提供了好的解决方案 springMVBC：专门用来优化控制器的，提供了既简单的数据提交，数据携带，页面跳转的功能 Mybatis：是一个持久层的框架，用来进行数据库访问的优化，专注于sql语句，极大的优化了JDBC的访问。    2 框架 JDBC优化的框架， 什么是框架(MyBatis)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-05-21T01:55:54.550Z">
+<meta property="article:modified_time" content="2022-06-21T06:55:22.908Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/05/21/Mybatis/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-21 14:55:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-21T01:55:54.550Z" title="Created 2024-05-21 09:55:54">2024-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-21T06:55:22.908Z" title="Updated 2022-06-21 14:55:22">2022-06-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-三层架构"><a href="#1-三层架构" class="headerlink" title="1 三层架构"></a>1 三层架构</h1><ol>
+<li>界面层</li>
+<li>业务逻辑层</li>
+<li>数据访问层</li>
+</ol>
+<ul>
+<li>常用的框架SSM<ul>
+<li>spring：核心是IOC和AOP 跨领域提供了好的解决方案</li>
+<li>springMVBC：专门用来优化控制器的，提供了既简单的数据提交，数据携带，页面跳转的功能</li>
+<li>Mybatis：是一个持久层的框架，用来进行数据库访问的优化，专注于sql语句，极大的优化了JDBC的访问。</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-框架"><a href="#2-框架" class="headerlink" title="2 框架"></a>2 框架</h1><ul>
+<li>JDBC优化的框架，</li>
+<li>什么是框架(MyBatis)<ul>
+<li>MyBatis是一个半成品，将重复的功能解决掉，帮助程序快速高效的进行开发，他是可复用的，可扩展的。前身叫iBatis 是APache开发的</li>
+<li>简化了JDBC的访问</li>
+</ul>
+</li>
+<li>添加框架的步骤<ul>
+<li>添加依赖</li>
+<li>添加配置文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-MyBatis"><a href="#2-1-MyBatis" class="headerlink" title="2.1 MyBatis"></a>2.1 MyBatis</h2><h3 id="2-1-1-mybatis查询操作"><a href="#2-1-1-mybatis查询操作" class="headerlink" title="2.1.1  mybatis查询操作"></a>2.1.1  mybatis查询操作</h3><ol>
+<li><p>新建一个students表格</p>
+</li>
+<li><p>加入maven的mybatis坐标，mysql驱动的坐标</p>
+</li>
+<li><p>创建实体类，students–保存在表中的一行数据</p>
+</li>
+<li><p>创建持久层的dao接口</p>
+</li>
+<li><p>创建一个mybatis配置文件</p>
+<p>叫做sql映射文件：写sql语句。一般一个表一个隐射文件</p>
+<p>则个文件是xml文件 </p>
+<p>需要特别注意的是：文件写在接口所在的目录中 文件的名称要和接口保持一致</p>
+<ul>
+<li>接口的模式 实例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sea.case_1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sea.domain_case_1.Students;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//接口操作students表</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentsDao</span>&#123;</span><br><span class="line">    <span class="comment">//查询students表单所有的数据</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Students&gt; <span class="title function_">selectStudents</span><span class="params">()</span>;</span><br><span class="line">    <span class="comment">//students标识要插入的数据 返回的是受影响的行数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">addStudents</span><span class="params">(Students students)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>sql的配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.sea.case_1.StudentsDao&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudents&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.domain_case_1.Students&quot;</span>&gt;</span></span><br><span class="line">        select stdtno,name,email from students order by stdtno;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--resulType:表示结构类型的，是sql语句执行后得到resultSet，遍历这个ResultSet得到的对象类型 需要写的是类型的全限定名称--&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--id表示你要执行的sql语句的唯一表示 你的mybatis会使用设个id之找到要执行的sql语句</span></span><br><span class="line"><span class="comment">            可以自定义，但是要求你使用接口中的方法名称--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">sql映射文件：写sql语句，mybatis会执行执行sql</span></span><br><span class="line"><span class="comment">    1. 指定约束文件</span></span><br><span class="line"><span class="comment">    &lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="comment">        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="line"><span class="comment">        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    mybatis-3-mapper.dtd是约束文件的名称，扩展名是dtd的。</span></span><br><span class="line"><span class="comment">    2. 约束文件的作用：限制和检查当前文件中出现的标签，属性必须符合mybatis要求</span></span><br><span class="line"><span class="comment">    &lt;mapper namespace=&quot;org.mybatis.example.BlogMapper&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;select id=&quot;selectBlog&quot; resultType=&quot;Blog&quot;&gt;</span></span><br><span class="line"><span class="comment">        select * from Students where stdtno = #&#123;id&#125;</span></span><br><span class="line"><span class="comment">    &lt;/select&gt;</span></span><br><span class="line"><span class="comment">    &lt;/mapper&gt;</span></span><br><span class="line"><span class="comment">    3.mapper 他是当前文件的根标签</span></span><br><span class="line"><span class="comment">    namespace 命名空间 是唯一值 可以是自定义的字符串 要求使用dao的全限定名称</span></span><br><span class="line"><span class="comment">    4.在当前文件中，可以使用特定的标签，表示数据库的特定操作。</span></span><br><span class="line"><span class="comment">        &lt;select&gt;：表示执行查询操作</span></span><br><span class="line"><span class="comment">        &lt;update&gt;:表示执行更新操作 就是说执行的是update的sql语句</span></span><br><span class="line"><span class="comment">        &lt;insert&gt;:查入</span></span><br><span class="line"><span class="comment">        &lt;delete&gt;:删除</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建mybatis的主配置文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--数据库环境的配置</span></span><br><span class="line"><span class="comment">            id：唯一值表示环境的名称</span></span><br><span class="line"><span class="comment">            default:必须和某个environment的id值一样</span></span><br><span class="line"><span class="comment">            告诉你的mybatis使用那个连接信息 也即是用哪一个数据库</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--transactionManager 事务的类型</span></span><br><span class="line"><span class="comment">            其中type的值有两种：</span></span><br><span class="line"><span class="comment">                1.JDBC（表示使用JBDC中的对象进行事务处理）--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--dataSource 表示数据员 type是数据源的类型 pooled表示连接池--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3066/mybase?serverTimezone=GMT&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;why123456&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/example/BlogMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--第一眼 感觉是连接数据库</span></span><br><span class="line"><span class="comment">    mybatis的主配置文件：主要定义了数据库的配置信息，sql映射文件的位置。</span></span><br><span class="line"><span class="comment">    1约束文件的说明：</span></span><br><span class="line"><span class="comment">    &lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="comment">        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span><br><span class="line"><span class="comment">        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span></span><br><span class="line"><span class="comment">        dtd/mybatis-3-config.dtd是约束文件的名称 是固定值</span></span><br><span class="line"><span class="comment">    2configuration 跟标签 表示各种配置信息</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>一个项目就一个主配置文件</p>
+<p>主配置文件提供了数据库的连接信息和sql隐射文件的位置信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在pom文件中的build标签中加上上面的语句可以编译非resource目录中的xml和properties文件</li>
+</ul>
+</li>
+<li><p>创建使用mybatis的类</p>
+<p>提供mybatis访问数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sea;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sea.domain_case_1.Students;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Myapp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//访问mybatis读取students数据</span></span><br><span class="line">        <span class="comment">//1.定义mybatis主配置文件的名称:从类路径的根开始</span></span><br><span class="line">        String config=<span class="string">&quot;MyBatisX.xml&quot;</span>;</span><br><span class="line">        <span class="comment">//读取config表示的文件</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> Resources.getResourceAsStream(config);</span><br><span class="line">        <span class="comment">//3.创建sqlSessionFactoryBuilder对象</span></span><br><span class="line">        <span class="type">SqlSessionFactoryBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>();</span><br><span class="line">        <span class="comment">//4.创建sqlSessionFactory对象</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> builder.build(in);</span><br><span class="line">        <span class="comment">//5.【重要】获取sqlSession对象，从sqlSessionFactory中获取sqlSession</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> factory.openSession();</span><br><span class="line">        <span class="comment">//6.【重要】指定要执行的sql语句的标识。 使用的sql映射文件的namespace+&quot;.&quot;+标签的id</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">SqlId</span> <span class="operator">=</span> <span class="string">&quot;com.sea.case_1.StudentsDao.selectStudents&quot;</span>;</span><br><span class="line">        <span class="comment">//7.执行sql语句 提供sqlId找到语句</span></span><br><span class="line">        List&lt;Students&gt; studentsList = sqlSession.selectList(SqlId);</span><br><span class="line">        <span class="comment">//8 输出结果</span></span><br><span class="line">        <span class="keyword">for</span> (Students stdt: studentsList)&#123;</span><br><span class="line">            System.out.println(stdt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//9.关闭sqlSession</span></span><br><span class="line">        sqlSession.close();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyConclusion</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> Resources.getResourceAsStream(<span class="string">&quot;MyBatisX.xml&quot;</span>); <span class="comment">//导入全局配置文件</span></span><br><span class="line">        <span class="type">SqlSessionFactoryBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>();<span class="comment">//创建一个构造</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span> builder.build(is);<span class="comment">//使用构造和流创建一个session工厂类</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> build.openSession();<span class="comment">//使用session工程类打开session</span></span><br><span class="line">        List&lt;Students&gt; list = session.selectList(<span class="string">&quot;com.sea.case_1.StudentsDao.selectStudents&quot;</span>); <span class="comment">//写sql语句的文件地址 执行后会返回结果</span></span><br><span class="line">        session.close(); <span class="comment">//关闭session</span></span><br><span class="line">        <span class="comment">//遍历得到的容器</span></span><br><span class="line">        <span class="keyword">for</span> (Students stdt:</span><br><span class="line">             list) &#123;</span><br><span class="line">            System.out.println(stdt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>需要注意的是mysql的端口号是3306；</p>
+<h3 id="2-1-1-mybatis的insert操作"><a href="#2-1-1-mybatis的insert操作" class="headerlink" title="2.1.1  mybatis的insert操作"></a>2.1.1  mybatis的insert操作</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addStudents&quot;</span>&gt;</span></span><br><span class="line">    insert into students(stdtno,name,email) value(#&#123;stdtno&#125;,#&#123;name&#125;,#&#123;email&#125;); //&#123;&#125;里面填写的是类内属性的名称</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sea;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sea.domain_case_1.Students;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyConclusion</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test1</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> Resources.getResourceAsStream(<span class="string">&quot;MyBatisX.xml&quot;</span>); <span class="comment">//导入全局配置文件</span></span><br><span class="line">        <span class="type">SqlSessionFactoryBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>();<span class="comment">//创建一个构造</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span> builder.build(is);<span class="comment">//使用构造和流创建一个session工厂类</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> build.openSession();<span class="comment">//使用session工程类打开session</span></span><br><span class="line">        List&lt;Students&gt; list = session.selectList(<span class="string">&quot;com.sea.case_1.StudentsDao.selectStudents&quot;</span>); <span class="comment">//写sql语句的文件地址 执行后会返回结果</span></span><br><span class="line">        session.close(); <span class="comment">//关闭session</span></span><br><span class="line">        <span class="comment">//遍历得到的容器</span></span><br><span class="line">        <span class="keyword">for</span> (Students stdt:</span><br><span class="line">             list) &#123;</span><br><span class="line">            System.out.println(stdt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test2</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Students</span> <span class="variable">stdt15</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Students</span>(<span class="number">15</span>, <span class="string">&quot;姜维&quot;</span>, <span class="string">&quot;jiangwei@gmail.com&quot;</span>);</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> Resources.getResourceAsStream(<span class="string">&quot;MyBatisX.xml&quot;</span>); <span class="comment">//导入全局配置文件</span></span><br><span class="line">        <span class="type">SqlSessionFactoryBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>();<span class="comment">//创建一个构造</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span> builder.build(is);<span class="comment">//使用构造和流创建一个session工厂类</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> build.openSession();<span class="comment">//使用session工程类打开session</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">insert</span> <span class="operator">=</span> <span class="number">0</span>;<span class="comment">//写sql语句的文件地址 执行后会返回结果</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            insert = session.insert(<span class="string">&quot;com.sea.case_1.StudentsDao.addStudents&quot;</span>,stdt15);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(insert == <span class="number">1</span>) &#123;</span><br><span class="line">                session.commit();</span><br><span class="line">                System.out.println(<span class="string">&quot;affect row number &quot;</span>+insert);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;insert false&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Students&gt; list = session.selectList(<span class="string">&quot;com.sea.case_1.StudentsDao.selectStudents&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历得到的容器</span></span><br><span class="line"></span><br><span class="line">        session.close();</span><br><span class="line">        <span class="keyword">for</span> (Students stdt:</span><br><span class="line">                list) &#123;</span><br><span class="line">            System.out.println(stdt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-3-打开日志"><a href="#2-2-3-打开日志" class="headerlink" title="2.2.3 打开日志"></a>2.2.3 打开日志</h3><p>实际上mybatis文档里面是直接提供了的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--setting :控制mybatis全局行为--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--设置，ybatis输出日志--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-主要的类的介绍"><a href="#3-主要的类的介绍" class="headerlink" title="3 主要的类的介绍"></a>3 主要的类的介绍</h1><h2 id="3-1主要类的介绍"><a href="#3-1主要类的介绍" class="headerlink" title="3.1主要类的介绍"></a>3.1主要类的介绍</h2><ol>
+<li><p>Resources：mybatis中的一个类。负责读取主配置文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> Resources.getResourceAsStream(<span class="string">&quot;MyBatisX.xml&quot;</span>); <span class="comment">//导入全局配置文件</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>SqlSessionFactoryBuilder:创建SqlSessionFactory对象 使用主配置转化的流来创建</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(is);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>SqlSessionFactory：重量级对象，程序创建一个对象耗时比较长，使用资源比较多</li>
+</ol>
+<p>整个项目有一个就好</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(is);</span><br><span class="line"><span class="comment">//方法说明</span></span><br><span class="line">build.openSession(); <span class="comment">//无参数的，获取是自动提交事务的sqlSession对象</span></span><br><span class="line">build.openSession(<span class="type">boolean</span>);<span class="comment">// 如果是true的话获取的是非自动提交事务的对象 如果是false的话获取的是自动提交事务。</span></span><br></pre></td></tr></table></figure>
+
+<p>用于获取SqlSession对象</p>
+<ol start="4">
+<li>sqlsession:</li>
+</ol>
+<ul>
+<li><p>接口：定义了操作数据的方法：例如 selectOne(),selectList(),insert(),update(),delete(),commit(),rollback()</p>
+</li>
+<li><p>sqlSession接口的实现类DefualtSqlSession</p>
+</li>
+<li><p>使用要求：sqlsession不是线程安全的，需要在方法的内部执行，在执行sql语句之情，使用opensession()获取sqlsession对象</p>
+<p>在执行完sql语句后，需要关闭它，执行sqlsession.close() 这样才能保证线程是安全的。</p>
+</li>
+<li><p>工具类</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sea.domain_case_1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.ResourceBundle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyUtil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">SqlSessionFactory</span> <span class="variable">build</span> <span class="operator">=</span><span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">Stream</span> <span class="operator">=</span> Resources.getResourceAsStream(<span class="string">&quot;MyBatisX.xml&quot;</span>);</span><br><span class="line">            <span class="comment">//创建sqlsessionfactory对象，使用SqlSessionFactoryBuild</span></span><br><span class="line">            build = <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(Stream);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title function_">SqlSession</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> build.openSession();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-2-传统的DAO操作方式："><a href="#3-2-传统的DAO操作方式：" class="headerlink" title="3.2 传统的DAO操作方式："></a>3.2 传统的DAO操作方式：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.DAO.Impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.DAO.StudentsDAO;</span><br><span class="line"><span class="keyword">import</span> com.sea.Students;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentsDAOImpl</span> <span class="keyword">implements</span> <span class="title class_">StudentsDAO</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Students&gt; <span class="title function_">selectStudents</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//获取sqlSession对象</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlsession</span> <span class="operator">=</span> MyUtil.SqlSession();</span><br><span class="line">        List&lt;Students&gt; studentsList = sqlsession.selectList(<span class="string">&quot;com.DAO.StudentsDAO.selectStudents&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Students stdt:</span><br><span class="line">                studentsList</span><br><span class="line">             ) &#123;</span><br><span class="line">            System.out.println(stdt);</span><br><span class="line">        &#125;</span><br><span class="line">        sqlsession.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> studentsList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">insertStudent</span><span class="params">(Students stu)</span> &#123;</span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlsession</span> <span class="operator">=</span> MyUtil.SqlSession();</span><br><span class="line">        <span class="type">Students</span> <span class="variable">students</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Students</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> sqlsession.insert(<span class="string">&quot;com.DAO.StudentsDAO.insertStudent&quot;</span>,stu);</span><br><span class="line">        sqlsession.commit();</span><br><span class="line">        sqlsession.close();</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>mybatis的动态代理：mybatis根据dao的方法调用，获取执行sql语句的信息<ul>
+<li>mybatis根据你的接口，创建一个dao接口的实现类，并且创建这个类的对象。 用反射获取接口类的全路径名和方法名  配置namespace和id 即实现类不需要再创建了。</li>
+<li>完成sqlsession调用方法，访问数据库。</li>
+<li>session.getMapper(studentsDao.class);</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>动态代理：使用SqlSession.getMapper(DAO接口.class)获取这个DAO接口的对象</p>
+</li>
+<li><p>传入参数：从java代码中把数据传入到mapper的sql语句中。</p>
+</li>
+<li><p>parameterType：是写在mapper文件中的一个属性 表示dao接口中的方法的参数数据类型</p>
+<p>例如：StudentsDAO接口</p>
+<p>public Students selectStudents(String id)</p>
+<ul>
+<li><p>需要注意的是parameter()是不必要的 不写mybatis也可以通过反射机制知道这个参数</p>
+</li>
+<li><p>传入一个简单参数：</p>
+</li>
+<li><pre><code class="java">/* 传一个简单类型的参数：
+*   简单类型：mybatis把java中的基本数据类型和String都叫做简单数据类型
+*
+* 在mapper中要获取简单类型的一个参数使用#&#123;任意字符&#125;;
+*    List&lt;Students&gt; selectStudents(Integer stdtno);
+*         select stdtno,name,email from students where stdtno=#&#123;Studentsid&#125;;
+* 使用#&#123;&#125;之后，mybatis执行sql是使用的jdbc中的preparestatement对象
+* 由mybatis执行下面的代码：
+* #&#123;&#125;可以防止sql注入 比较安全
+*/
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. ## 如何传入多个参数？</span><br><span class="line"></span><br><span class="line">   1. ### 多个参数，使用@param命名参数</span><br><span class="line"></span><br><span class="line">      + 接口 public List&lt;Studuents&gt; selectMulitParam(@param(&quot;myname&quot;) String name,@param(&quot;myage&quot;) Integer age);</span><br><span class="line"></span><br><span class="line">      + 使用@param(&quot;参数名&quot;) 命名参数</span><br><span class="line"></span><br><span class="line">      + ```xml</span><br><span class="line">        &lt;select&gt;</span><br><span class="line">        	select * from students where name=#&#123;myname,javaType=string,jdbcType=VARCHAR&#125; or age=#&#123;myage&#125;;</span><br><span class="line">        &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+ + ### 使用对象传参
+
+   + 创建一个类保存需要查询的信息 在mapper中使用
+     + 使用对象的属性值作为参数的语法标准
+       + 使用对象的语法：#&#123;属性名,javaType=类型名称，jdbcType=数据类型&#125; 最完整的语法格式 很少用
+         + 常常只写属性名
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>java类的别名全是小写 string int integer  </li>
+<li>database类的别名都是大写的 VARCHAR INT CLOB</li>
+<li>总结：#{}是用来匹配参数的</li>
+</ul>
+<h1 id="4-mybatis"><a href="#4-mybatis" class="headerlink" title="4 mybatis"></a>4 mybatis</h1><h2 id="4-1-ResultType"><a href="#4-1-ResultType" class="headerlink" title="4.1 ResultType"></a>4.1 ResultType</h2><ul>
+<li><h3 id="（1）ResultType：mybatis的输出结果类型，指sql语句执行完之后，数据转化为的java对象。java类型是任意的。"><a href="#（1）ResultType：mybatis的输出结果类型，指sql语句执行完之后，数据转化为的java对象。java类型是任意的。" class="headerlink" title="（1）ResultType：mybatis的输出结果类型，指sql语句执行完之后，数据转化为的java对象。java类型是任意的。"></a>（1）ResultType：mybatis的输出结果类型，指sql语句执行完之后，数据转化为的java对象。java类型是任意的。</h3></li>
+<li><p>ResultType： 1. 结果类型的全限定名称  2. 类的别名</p>
+</li>
+<li><p>处理的方式：</p>
+<ol>
+<li><p>mybatis执行sql语句，然后mybatis调用类的无参构造方法，创建对象。</p>
+</li>
+<li><p>mybatis把ResultSet指定的列值 赋值给同名的属性。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudents&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">    select stdtno,name,email from students where stdtno=#&#123;Studentsid&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<p>相当于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> executeselete(<span class="string">&quot;select stdtno,name,email from students where stdtno=#&#123;Studentsid&#125;;&quot;</span>)</span><br><span class="line"><span class="keyword">while</span>(re.next())&#123;</span><br><span class="line">    <span class="type">Students</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Students</span>();</span><br><span class="line">    student.setName();</span><br><span class="line">    student.setstdtno();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-定义自定义类的别名"><a href="#4-2-定义自定义类的别名" class="headerlink" title="4.2 定义自定义类的别名"></a>4.2 定义自定义类的别名</h2><ol>
+<li>在mybatis主配置文件中定义，使用<TypeAllas>定义别名</li>
+<li>可以在mapper的ResultType中使用自定义的别名</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;typeAlias type=&quot;com.sea.Hero&quot; alias=&quot;hero&quot;/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.sea&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;package&gt;name是包名，这个包中的所有类，类名就是别名（类名不区分大小写） 这个好--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Map<ul>
+<li>不建议使用 使用手册说了</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-3-ResultMap"><a href="#4-3-ResultMap" class="headerlink" title="4.3 ResultMap"></a>4.3 ResultMap</h2><ul>
+<li><p>ResultMap 叫做结果映射，指定列名和java对象属性对应关系。</p>
+<ul>
+<li><p>你可以自定义列值赋给那个属性</p>
+</li>
+<li><p>当你的列名和属性不同时，一定要使用resultmap</p>
+</li>
+<li><pre><code class="xml">&lt;resultMap id=&quot;studentsToHeroMap&quot; type=&quot;Hero&quot;&gt;   map 映射
+    &lt;result column=&quot;stdtno&quot; property=&quot;Herono&quot;&gt;&lt;/result&gt;
+&lt;/resultMap&gt;
+&lt;select id=&quot;transformToHero&quot; resultType=&quot;hero&quot; resultMap=&quot;studentsToHeroMap&quot;&gt;
+    select name,stdtno from students;
+&lt;/select&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 4.4 模糊匹配</span><br><span class="line"></span><br><span class="line">### 4.4.1 method 1</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">//第一种like</span><br><span class="line">List&lt;Students&gt; NotClearSearch(String name);</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;NotClearSearch&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">    select stdtno,name,email from students where name like #&#123;aimmyname&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-1-method-2"><a href="#4-4-1-method-2" class="headerlink" title="4.4.1 method 2"></a>4.4.1 method 2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Students&gt; <span class="title function_">NotClearSearch</span><span class="params">(String name)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;NotClearSearch&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">    select stdtno,name,email from students where name like &quot;%&quot;#&#123;aimname&#125;&quot;%&quot;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-动态sql-if-where-forEach"><a href="#5-动态sql-if-where-forEach" class="headerlink" title="5 动态sql  if-where-forEach"></a>5 动态sql  if-where-forEach</h2><ul>
+<li><p>动态sql的内容是变化的，可以根据条件获取到不同的sql语句。</p>
+<ul>
+<li>主要是where部分变化</li>
+</ul>
+</li>
+<li><p>动态sql的实现，使用的是mybatis提供的标签，<if>,<where>,<foreach></p>
+<ol>
+<li><p>if 是判断条件：</p>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;判断java对象的属性值&quot;</span>&gt;</span>部分sql语句<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.DAO.StudentsDAO&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudentsId&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">        select name,email,stdtno from students</span><br><span class="line">        where</span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name!=null and name!=&#x27;&#x27;&quot;</span>&gt;</span> 注意左边的那么是指参数的 而不是数据库列属性名</span><br><span class="line">            name=#&#123;name&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;stdtno&gt;0&quot;</span>&gt;</span></span><br><span class="line">            and stdtno&gt;#&#123;stdtno&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li><where> 
++ 用来包含多个<if>的，当多个if有一个成立的，<where>会自动增加一个where 关键字，并去掉if中多余的and，or等</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name!=null and name!=&#x27;&#x27;&quot;</span>&gt;</span></span><br><span class="line">        name=#&#123;name&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;stdtno&gt;0&quot;</span>&gt;</span></span><br><span class="line">        and stdtno&gt;#&#123;stdtno&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><for-each>
+
+<ul>
+<li>循环java中的数组，list集合的。主要用在sql的in语句中。<ul>
+<li>学生stdtno是1，2，3的三个学生</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> students <span class="keyword">where</span> stdtno <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Students&gt; <span class="title function_">mutipleselect</span><span class="params">()</span>&#123;List&lt;Integer&gt; idlist&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ...;</span><br><span class="line"></span><br><span class="line">list.add(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">list.add(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">list.add(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">dao.multipleselect(list)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudentsForEach&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">    select * from students where id in </span><br><span class="line">                           <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;&quot;</span> <span class="attr">item</span>=<span class="string">&quot;&quot;</span> <span class="attr">open</span>=<span class="string">&quot;&quot;</span> <span class="attr">close</span>=<span class="string">&quot;&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">                               </span><br><span class="line">                           <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><p>collcation 表示接口中的方法的参数的类型，如果 是数组使用array，如果是list集合使用list</p>
+</li>
+<li><p>item 自定义的表示数组和集合成员的变量</p>
+</li>
+<li><p>open 循环开始时的字符</p>
+</li>
+<li><p>close 循环结束时的字符</p>
+</li>
+<li><p>separator 集合成员之间的分隔符</p>
+<ul>
+<li>参数为简单数据类型</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   foreash 使用1--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudentsForEach&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">       select * from students where stdtno in</span><br><span class="line">                              <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span> <span class="attr">item</span>=<span class="string">&quot;stdtno&quot;</span> <span class="attr">open</span>=<span class="string">&quot;(&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">                               #&#123;stdtno&#125;</span><br><span class="line">                              <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数为自定义类型 (stu)</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   foreash 使用1--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudentsForEach&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">       select * from students where stdtno in</span><br><span class="line">                              <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span> <span class="attr">item</span>=<span class="string">&quot;stu&quot;</span> <span class="attr">open</span>=<span class="string">&quot;(&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">                               #&#123;stu.stdtno&#125;</span><br><span class="line">                              <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sql代码片段，就是服用一些方法</p>
+<ul>
+<li>步骤</li>
+<li>先定义<sql id="自定义唯一标识符" > sql语句</sql></li>
+<li>在使用<include refid="目标id"/></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;select&quot;</span>&gt;</span></span><br><span class="line">    select name,email,stdtno from students</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectStudentsId&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.sea.Students&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">&quot;select&quot;</span>/&gt;</span></span><br><span class="line">    where 1=1</span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name!=null and name!=&#x27;&#x27;&quot;</span>&gt;</span></span><br><span class="line">        and name=#&#123;name&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;stdtno&gt;0&quot;</span>&gt;</span></span><br><span class="line">        and stdtno&gt;#&#123;stdtno&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="5-主配置文件"><a href="#5-主配置文件" class="headerlink" title="5 主配置文件"></a>5 主配置文件</h1><ul>
+<li><p>transaction事务处理的类型：</p>
+<ul>
+<li>JDBC：表示mybatis底层使用的是调用jdbc中的connection对象的，commit和rollback</li>
+<li>MANAGER：把mybatis的事务管理委托给其他容器(一个服务器软件，一个框架叫spring)</li>
+</ul>
+</li>
+<li><p>dataSource:表示数据源，java体系中，规定了java.sql.DataSource接口都是数据原</p>
+<ul>
+<li><p>数据源表示connection对象的</p>
+</li>
+<li><p>type：指定数据源的类型</p>
+<ul>
+<li><p>POOLED：使用连接池，mybatis会创建pooleddataSource类</p>
+</li>
+<li><p>upooled：不使用连接池，在每次执行sql语句时，先创建连接，再执行sql，在关闭连接</p>
+<p>​		mybatis会创建一个unpooledDataSource，管理Connection对象的使用</p>
+</li>
+<li><p>JNDI：java命名和目录服务(Windows注册表)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据库的属性配置文件：把数据库连接信息放到一个单独的文件中，和mybatis主配置文件分开</p>
+</li>
+<li><p>目的是便于修改，保存和处理数据库的信息</p>
+<ul>
+<li>在recources目录中定义一个属性配置文件，xxx.properties例如 jdbc,properties在属性配置文件中，定义数据，格式是key&#x3D;value</li>
+<li>key一般使用多级目录的</li>
+</ul>
+</li>
+</ul>
+<h3 id="的使用"><a href="#的使用" class="headerlink" title="${}的使用"></a>${}的使用</h3><ul>
+<li>在mybatis的主配置文件中，使用<property>指定文件的位置 property resource<ul>
+<li>在需要使用的地方，${key}</li>
+</ul>
+</li>
+</ul>
+<h3 id="多mapper的处理方式"><a href="#多mapper的处理方式" class="headerlink" title="多mapper的处理方式"></a>多mapper的处理方式</h3><ul>
+<li><p>第一种是在主配置文件中配置多个mapper  resource</p>
+</li>
+<li><p>第二种使用包名 package name</p>
+<ul>
+<li>name：xml文件（mapper文件）所在的包名，这个包所有的xml文件一次都能加载到mybatis内<ul>
+<li>使用package 的要求<ol>
+<li>mapper文件名称要和接口名称一样，区分的小写的一样</li>
+<li>mapper文件和DAO的接口要在同一个目录中</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pagehelper数据分页的</p>
+</li>
+<li><p>添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;pagehelper&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;5.1.10&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PageHelper.startPage(<span class="number">1</span>,<span class="number">3</span>);  <span class="comment">//startPage(pageNum,pageSize)  pageNum第几页 pageSize 页面大小</span></span><br><span class="line"><span class="type">List</span> <span class="variable">StudentsList</span> <span class="operator">=</span> studentsDAO.selectStuendts();</span><br><span class="line">studentsList( stu -&gt; sysout.out.println(stu));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/05/21/Mybatis/">http://example.com/2024/05/21/Mybatis/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/05/21/Mybatis-Plus/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/05/21/MQ/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">1 三层架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">2 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-MyBatis"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 MyBatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-mybatis%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1  mybatis查询操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-mybatis%E7%9A%84insert%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.1  mybatis的insert操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E6%89%93%E5%BC%80%E6%97%A5%E5%BF%97"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.2.3 打开日志</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E7%9A%84%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">3 主要的类的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E4%B8%BB%E8%A6%81%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text">3.1主要类的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BC%A0%E7%BB%9F%E7%9A%84DAO%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 传统的DAO操作方式：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-mybatis"><span class="toc-number">4.</span> <span class="toc-text">4 mybatis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-ResultType"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 ResultType</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89ResultType%EF%BC%9Amybatis%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%8C%87sql%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E5%AE%8C%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BA%E7%9A%84java%E5%AF%B9%E8%B1%A1%E3%80%82java%E7%B1%BB%E5%9E%8B%E6%98%AF%E4%BB%BB%E6%84%8F%E7%9A%84%E3%80%82"><span class="toc-number">4.1.1.</span> <span class="toc-text">（1）ResultType：mybatis的输出结果类型，指sql语句执行完之后，数据转化为的java对象。java类型是任意的。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%AE%9A%E4%B9%89%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%9A%84%E5%88%AB%E5%90%8D"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 定义自定义类的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-ResultMap"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 ResultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-method-2"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.4.1 method 2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8A%A8%E6%80%81sql-if-where-forEach"><span class="toc-number">4.4.</span> <span class="toc-text">5 动态sql  if-where-forEach</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">5 主配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.0.1.</span> <span class="toc-text">${}的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9Amapper%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">5.0.2.</span> <span class="toc-text">多mapper的处理方式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/SpringMVCLearn/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.699Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/springcloud/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.647Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/Springboot/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.627Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/Shell/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.608Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/servletLearn/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.589Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

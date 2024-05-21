@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-05-21 09:29:37'
+  postUpdate: '2024-05-21 10:02:35'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -149,17 +149,245 @@
       }
       detectApple()
     })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/05/20/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-20T14:51:18.157Z" title="Created 2024-05-20 22:51:18">2024-05-20</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/SpringMVCLearn/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.699Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">SpringMVC
+纯注解式开发 
+跳转方式有优化
+日期处理时相对麻烦的
+拦截器：更多的处理请求和响应的时机 感觉类似于监听器
+SSM整合(Spring SpringMVC mybatis) 整合后台的功能
 
-More info: Writing
-Run server1$ hexo server
+1. 什么是SpringMVC
+它是用来mvc开发模式的框架用来优化控制器，他是spring家族的一员，他也具备AOP和IOC。
+什么是MVC？
+他是一种开发模式
+他是模型视图控制器的简称 (module view controller)
+所有的web应用都是基于MVC开发模式的
+模型层：包含实体类，业务逻辑，数据访问
+视图层：html，javascript，vue 都是视图层的 用来呈现数据的就是试图层
+控制层：用来接收用户端的请求，并且返回响应到客服端的组件 servlet就是controller层
 
-More info: Server
-Generate static files1$ hexo generate
 
-More info: Generating
-Deploy to remote sites1$ hexo deploy
 
-More info: Deployment
-</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2024/05/20/hello-world/" title="Hello World">Hello World</a><time datetime="2024-05-20T14:51:18.157Z" title="Created 2024-05-20 22:51:18">2024-05-20</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">May 2024</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-05-21T01:29:37.444Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+
+
+1.1 springMVC的优点
+轻量级，基于MVC框架
+易于上手，容易理解，功能强大
+它具备IOC和AOP
+完全基于注解开发
+
+
+
+
+
+1.2  基于注解的SpringMVC框架的开发步骤：
+新建项目，选择webapp的模板
+添加缺失的目录(test,java,re ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/springcloud/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.647Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">SpringCloud微服务框架的系统架构是一个分布式的系统，按照业务领域划分为独立的服务单元，有自动化运维，容错，快速演进的特点，特能够解决传统单体框架系统的痛点，同时又能满足越来越复杂的业务需求。
+1.1 单体架构的不足
+业务越来越复杂，单体应用代码越来越大，可读性和扩展性下降
+随着用户越来越多，程序承受的并发越来越多，单体的承受能力有限
+测试的难度比较大，单体应用的业务都在同一个程序中。
+
+1.2 微服务是什么？
+就是大的应用拆分为多个模块，每个模块有自己的功能，每个模块之间可以相互交互，这就是微服务。
+每个服务可以作为一个单独的进程来处理
+
+1.2.1 总结出微服务的特点
+按业务划分为一个独立运行的程序，即服务单元
+服务之间通过http 协议互相通信，http是一个万能的协议
+自动化部署
+可以用不同的编译语言
+可以使用不同的存储技术
+服务集中化管理
+微服务是一个分布式系统
+
+自动化部署
+单体项目的部署： 修改配置文件，打包，上传，运行
+CI&#x2F;CD 持续集成 持续交付
+
+微服务的不足
+微服务的复杂度
+分布式事务的问题
+服务的划分
+服务的部署
+
+总体上还是利大于弊的
+1. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/Springboot/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.627Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">1 springboottips:start.spring.io是外国的网址 相对较慢 推荐使用 国内的网址:Start.springboot.io相对较快
+1.1 基本注解1234567@SpringBootApplicationpublic class MainApplicationClass &#123;    public static void main(String[] args) &#123;        ConfigurableApplicationContext run = SpringApplication.run(MainApplicationClass.class); //主配置类    &#125;&#125;
+
+
+
+12345@SpringBootApplication //主配置类注解//以下的注解是主配置类注解的组成部分@SpringBootConfiguration //主配置类也在容器中@EnableAutoConfiguration@ComponentScan
+
+1@EnableAutoConfiguration //启动制动配置，把java对象 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/Shell/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.608Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">Shell
+一些字符串的操作
+
+反引号的作用就是将反引号内的Linux命令先执行，然后将执行结果赋予变量。
+
+
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/servletLearn/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.589Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">JAVAWEB1  servlet：12&lt;!--注意一下的路径以斜杠开始带享目名不需要添加端口号和IP和协议名--&gt;&lt;a href=&quot;/oa/login.html&quot;&gt;user login&lt;/a&gt;
+
+
+界面层：通常有美工来完成  html javascript  
+逻辑层：通常由程序员来完成 javaBean…servlet spring  
+数据层：数据库分析员来完成  jdbc jdbc-odbc  
+动态的数据需要JDBC技术来实现 我们需要写java程序的通信原理是什么样的呢？
+创建一个servlet然后再在配置文件内将其部署
+
+
+webApp是具有独立性的一方 
+
+servlet规定了：
+
+一个合格的webapp应该是这样的文件目录结构
+
+
+一个合格的webapp应该是怎样的配置文件
+一个合格的webapp应该将配置文件存放在哪里
+一个合格的webappjava程序放在哪里
+
+
+
+servlet规范是什么样的规范：
+
+遵寻servlet规范的webapp是可以放在WEB服务器中运行。
+servlet规范了哪些接口
+规范了哪 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/Mybatis-Plus/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.567Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">
+在java中访问数据库，使用jdbc
+
+
+在项目中直接使用jdbc 访问数据库 创建connection resultSet
+把jdbc的操作进行封装。创建了很多工具类，比如DBUtil
+持久化的框架
+hibernate： 全自动的ORM框架。实现java object –表的映射。可以通过java对象的方法，操作表中的数据。开发人员可以不了解或者少了解sql语句可以使用hibernate访问不同的数据库，不需要改变代码。通过不同的数据库。
+jpa规范，定义了访问数据库的各种操作。定义了一致的方法操作数据库jpa有各种实现：hibernate open-jpa link
+mybatis： 需要编写xml配置文件，在xml文件中编写sql语句，访问数据库。任何的操作都需要使用xml文件。对开发人员要求较高，需要熟悉sql语言。单表的CRUD也需要使用xml来编写sql语句
+mybatis-plus： 简称MP 他是对mybatis的增强。 在mybatis之外加入了一层，通过mybatis puls实现单表的CRUD，不使用xml文件。分页，性能统计，逻辑删除等等
+
+
+
+什么是Myba ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/Mybatis/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.550Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">1 三层架构
+界面层
+业务逻辑层
+数据访问层
+
+
+常用的框架SSM
+spring：核心是IOC和AOP 跨领域提供了好的解决方案
+springMVBC：专门用来优化控制器的，提供了既简单的数据提交，数据携带，页面跳转的功能
+Mybatis：是一个持久层的框架，用来进行数据库访问的优化，专注于sql语句，极大的优化了JDBC的访问。
+
+
+
+2 框架
+JDBC优化的框架，
+什么是框架(MyBatis)
+MyBatis是一个半成品，将重复的功能解决掉，帮助程序快速高效的进行开发，他是可复用的，可扩展的。前身叫iBatis 是APache开发的
+简化了JDBC的访问
+
+
+添加框架的步骤
+添加依赖
+添加配置文件
+
+
+
+2.1 MyBatis2.1.1  mybatis查询操作
+新建一个students表格
+
+加入maven的mybatis坐标，mysql驱动的坐标
+
+创建实体类，students–保存在表中的一行数据
+
+创建持久层的dao接口
+
+创建一个mybatis配置文件
+叫做sql映射文件：写sql语句。一般一个表一个隐射文件
+则个文件是xml文件 
+需要特别注意的是：文件写在接口所在的目 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/MQ/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.534Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">MQ message queue kafka消息队列的异步处理
+将不重要的步骤经行异步的处理 可以加快响应的速度
+
+解耦合
+系统之间通常使用api进行
+消息队列可以作为一个中间的代理 可以在生产者消费者之间解耦合
+例如将订单系统和库存系统中添加一个消息队列
+
+流量削峰
+有大量的用户使用app 达到一个请求峰值的时候 服务器就会崩溃
+如何高并发
+当请求高的时候会有一个排队的处理
+例如 12306之前的使用情况
+服务器的集群也是有瓶颈的 数据库也会成为服务的瓶颈
+mysql的单机处理量是8000左右 redis也是不能满足的
+放到消息队列中 形成一个缓冲的时间 
+并且消息队列的单机存储量可以达到10w数量级
+
+日志处理
+大型电商网络 app等需要分析用户的行为，要根据用户的访问情况来发现用户的喜好以及活跃状态，需要在页面上收集大量的用户访问信息
+经典的实时处理的一个架构
+nginx可以处理很多的并发
+
+
+
+kafka
+kafka是由apache软件基金会开发的一个开源软件，是由scala和java编写的。kafka的apache官网是这样介绍kafka的
+一个分布式的流平台
+发布和订阅流数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/Linux_Learn/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.513Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">Linux简介：一种操作系统用于管理计算机资源的系统软件Linux注重安全性和稳定性，高并发处理能力，没有优异的可视化界面Linux主要发行版本：Ubuntu(乌班图),Redhat(红帽),CentOS
+安装Linux操作系统
+虚拟机：可以用软件的方法模拟出一套具有完整的硬件系统功能的，运行在一个完全隔离的系统环境的完整计算机系统。
+
+
+Linux的文件目录结果
+Bin： 存放的是命令的文件 用户的可执行文件可放在 bin-&gt;usr&#x2F;bin
+user&#x2F;local&#x2F;bin：存放用户自己的可执行文件 和 上面的大差不差
+etc：放的是配置文件 最重要的是环境变量。etc&#x2F;profile
+opt：这是给Linux文件额外安装的软件的目录 比如：JDK Tomcat Mysql 相当于Windows中的program
+快照的使用：使用快照可以实现对系统的回滚 类似于sql的事务管理
+
+
+
+Linux远程操作？
+Xshell 远程控制台
+Xftp 传输文件 ftp可能会有中文乱码 可以再文件中修改编码模式为UTF-8
+虚拟机的迁移和删除：
+
+使用v ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/05/21/JVM./" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-21T01:55:54.496Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></span></div><div class="content">JVM
+定义
+java virtual machine -java 程序的运行环境（java二进制字节码的运行环境）
+
+
+好处
+一次编写，到处运行
+自动内存管理，垃圾回收机制
+数组下标越界检查
+多态
+
+
+比较：
+jvm jre jdk
+
+.java文件被javac之后会变成class的二进制文件
+放入到类的加载器中
+放到jvm中：方法区 堆 虚拟机构 程序计数器 本地方法栈 本地方法接口
+执行引擎： 解释器 即时编译器 垃圾回收 本地方法接口
+
+
+
+内存结构程序计数器 program counter regist
+二进制文件的许多指令需要通过解释器 解释成机器码才能有CPU来处理
+二进制字节码—&gt;解释器—–&gt;机器码—–&gt;CPU
+程序计数器的作用就是记录下一条jvm指令的执行地址
+
+需要主义的是 每个线程都有自己的程序计数器 所以 他是线程私有的 不会存在内存溢出
+
+虚拟机栈 jvm stacks
+stacks 先进后出
+就是线程运行时需要的内存空间 多个线程就会需要多个栈
+一个栈内可以看成是由多个栈帧组成的
+栈帧 每个方法运行需要的内存
+
+
+每个线程只能有一个活动栈帧 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/SpringMVCLearn/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.699Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/springcloud/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.647Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/Springboot/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.627Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/Shell/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.608Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/21/servletLearn/" title="Untitled">Untitled</a><time datetime="2024-05-21T01:55:54.589Z" title="Created 2024-05-21 09:55:54">2024-05-21</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">May 2024</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">17</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-05-21T02:02:35.523Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
