@@ -1,3 +1,5 @@
+http://example.com/tags/index.html
+http://example.com/categories/index.html
 http://example.com/2024/05/22/SpringMVCLearn/
 http://example.com/2024/05/22/SpringLearn/
 http://example.com/2024/05/22/springcloud/
